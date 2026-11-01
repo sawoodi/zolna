@@ -1,211 +1,108 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>زولنا | سوقنا يجمعنا</title>
-
-  <style>
-
-    body {
-
-      margin: 0;
-
-      font-family: Arial, sans-serif;
-
-      background: #f5f7f2;
-
-      color: #183c2b;
-
-    }
-
-    header {
-
-      background: #145c39;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 28px 15px;
-
-    }
-
-    header h1 {
-
-      font-size: 38px;
-
-      margin: 0;
-
-    }
-
-    header p {
-
-      margin-bottom: 0;
-
-      font-size: 18px;
-
-    }
-
-    nav {
-
-      display: flex;
-
-      justify-content: center;
-
-      gap: 12px;
-
-      padding: 15px;
-
-      background: white;
-
-    }
-
-    nav a {
-
-      color: #145c39;
-
-      text-decoration: none;
-
-      font-weight: bold;
-
-    }
-
-    main {
-
-      max-width: 850px;
-
-      margin: 30px auto;
-
-      padding: 0 16px;
-
-      text-align: center;
-
-    }
-
-    .welcome {
-
-      background: white;
-
-      padding: 28px 18px;
-
-      border-radius: 16px;
-
-    }
-
-    .categories {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 15px;
-
-      margin-top: 22px;
-
-    }
-
-    .category {
-
-      background: white;
-
-      padding: 24px 10px;
-
-      border-radius: 14px;
-
-      font-size: 20px;
-
-      font-weight: bold;
-
-    }
-
-    .button {
-
-      display: inline-block;
-
-      margin-top: 20px;
-
-      padding: 13px 24px;
-
-      background: #d6a83d;
-
-      color: #183c2b;
-
-      border-radius: 9px;
-
-      text-decoration: none;
-
-      font-weight: bold;
-
-    }
-
-    footer {
-
-      text-align: center;
-
-      padding: 25px;
-
-      color: #777;
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>زولنا | سوقنا يجمعنا</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7f2;color:#183c2b}
+header{background:#145c39;color:white;text-align:center;padding:25px 15px}
+header h1{font-size:42px;margin:0}
+header p{color:#e6c56d;font-size:18px}
+nav{background:white;padding:15px;text-align:center;display:flex;justify-content:center;gap:20px}
+nav a{color:#145c39;text-decoration:none;font-weight:bold}
+main{max-width:950px;margin:25px auto;padding:15px}
+.hero{background:#145c39;color:white;padding:35px 20px;text-align:center;border-radius:18px}
+.hero h2{font-size:27px}
+.search{width:100%;padding:15px;border:1px solid #ddd;border-radius:10px;margin-top:15px;font-size:16px}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:25px 0}
+.category{background:white;border:2px solid #e3eadf;border-radius:14px;padding:25px;text-align:center;font-size:21px;font-weight:bold;cursor:pointer}
+.category:hover{border-color:#d6a83d}
+h2.section{text-align:center;margin-top:35px}
+.listings{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;border-radius:14px;padding:20px;text-align:center;box-shadow:0 2px 8px #0000000d}
+.card .emoji{font-size:48px}
+.card h3{margin:10px}
+.card p{color:#777}
+.btn{background:#d6a83d;color:#183c2b;border:0;padding:13px 20px;border-radius:9px;font-weight:bold;cursor:pointer}
+.add{background:white;border-radius:15px;padding:22px;margin-top:35px}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
+footer{background:#145c39;color:white;text-align:center;padding:25px;margin-top:35px}
+</style>
 </head>
-
 <body>
 
-  <header>
+<header>
+<h1>زولنا</h1>
+<p>سوقنا.. يجمعنا 🇸🇩</p>
+</header>
 
-    <h1>زولنا</h1>
+<nav>
+<a href="#">الرئيسية</a>
+<a href="#categories">الأقسام</a>
+<a href="#listings">الإعلانات</a>
+<a href="#add">أضف إعلانك</a>
+</nav>
 
-    <p>سوقنا.. يجمعنا</p>
+<main>
+<section class="hero">
+<h2>كل السودان في سوق واحد</h2>
+<p>ابحث عن عقار أو سيارة للبيع في السودان</p>
+<input class="search" id="search" placeholder="ابحث عن عقار أو سيارة...">
+</section>
 
-  </header>
+<h2 class="section" id="categories">تصفح الأقسام</h2>
+<section class="categories">
+<div class="category" onclick="filterItems('عقار')">🏠 العقارات</div>
+<div class="category" onclick="filterItems('سيارة')">🚗 السيارات</div>
+</section>
 
-  <nav>
+<h2 class="section" id="listings">الإعلانات</h2>
+<section class="listings" id="items">
+<div class="card" data-type="عقار">
+<div class="emoji">🏠</div>
+<h3>عقارات السودان</h3>
+<p>ابحث عن منزلك القادم</p>
+</div>
+<div class="card" data-type="سيارة">
+<div class="emoji">🚗</div>
+<h3>سيارات السودان</h3>
+<p>ابحث عن سيارتك القادمة</p>
+</div>
+</section>
 
-    <a href="#">الرئيسية</a>
+<section class="add" id="add">
+<h2>➕ أضف إعلانك</h2>
+<p>قريباً يمكنك إضافة إعلانك والتواصل مع المشترين.</p>
+<input placeholder="عنوان الإعلان" disabled>
+<select disabled>
+<option>اختر القسم</option>
+<option>عقار</option>
+<option>سيارة</option>
+</select>
+<button class="btn" disabled>إضافة الإعلان قريباً</button>
+</section>
+</main>
 
-    <a href="#categories">الأقسام</a>
+<footer>
+<strong>زولنا © 2026</strong>
+<p>سوقنا.. يجمعنا</p>
+</footer>
 
-    <a href="#contact">تواصل معنا</a>
-
-  </nav>
-
-  <main>
-
-    <section class="welcome">
-
-      <h2>مرحباً بيكم في زولنا</h2>
-
-      <p>منصتكم السودانية للبيع والشراء بكل سهولة.</p>
-
-      <a class="button" href="#categories">تصفح الإعلانات</a>
-
-    </section>
-
-    <section id="categories" class="categories">
-
-      <div class="category">🏠 العقارات</div>
-
-      <div class="category">🚗 السيارات</div>
-
-    </section>
-
-  </main>
-
-  <footer id="contact">
-
-    زولنا © 2026 — سوقنا يجمعنا
-
-  </footer>
+<script>
+function filterItems(type){
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=card.dataset.type===type?'block':'none';
+});
+}
+document.getElementById('search').addEventListener('input',function(){
+let value=this.value.trim();
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=card.innerText.includes(value)?'block':'none';
+});
+});
+</script>
 
 </body>
-
 </html>
