@@ -110,6 +110,19 @@ const zolnaDB = window.supabase.createClient(
 );
 </script>
 </script>
-
+<script>
+zolnaDB
+  .from('listings')
+  .select('*')
+  .limit(1)
+  .then(({ data, error }) => {
+    const status = document.createElement('p');
+    status.style.cssText = 'padding:12px;text-align:center;font-weight:bold;';
+    status.textContent = error
+      ? 'اتصال قاعدة البيانات ما نجح'
+      : 'اتصال قاعدة البيانات ناجح 💚';
+    document.body.appendChild(status);
+  });
+</script>
 </body>
 </html>
