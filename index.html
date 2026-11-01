@@ -99,9 +99,16 @@ card.style.display=card.dataset.type===type?'block':'none';
 document.getElementById('search').addEventListener('input',function(){
 let value=this.value.trim();
 document.querySelectorAll('.card').forEach(card=>{
-card.style.display=card.innerText.includes(value)?'block':'none';
-});
-});
+card.style.display=card.innerText.includes(value)?'block':'<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://xxfzzklbqzuevfwjvkhc.supabase.co";
+const SUPABASE_KEY = "ضع_المفتاح_هنا";
+
+const zolnaDB = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 </script>
 
 </body>
